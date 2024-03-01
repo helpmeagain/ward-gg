@@ -1,13 +1,10 @@
-import { Button } from "./components/ui/button";
+import Header from "./components/Header";
 
 function App() {
-
-  const handleClick = () => {
-    console.log("Test completed");
-  };
-
   return (
-    <Button onClick={handleClick}>test</Button>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+    </div>
   );
 }
 
