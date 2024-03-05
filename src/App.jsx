@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Profile from "./components/Profile";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <main className="flex-1 p-6 flex gap-6">
         <div className="flex flex-col flex-1 gap-4">
           <h2 className="text-4xl italic"> Parte da esquerda </h2>
+          <Search />
           <Profile />
           <p>Aqui virá informações</p>
           <p>Aqui virá informações</p>
