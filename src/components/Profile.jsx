@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Badge } from "./ui/badge";
 
-const Profile = () => {
+const Profile = ({ playerId, tag }) => {
     const [summonerData, setSummonerData] = useState(null);
 
     useEffect(() => {
         const fetchSummonerData = async () => {
             try {
                 const proxy = "https://corsproxy.io/?"
-                const apiUrl = "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
-                const playerName = "help%20me%20again"
+                const apiUrl = "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/"
                 const apiKey = process.env.REACT_APP_API_KEY
 
-                const response = await fetch(proxy + apiUrl + playerName, {
+                const response = await fetch(proxy + apiUrl + playerId, {
                     headers: {
                         'X-Riot-Token': apiKey
                     }
@@ -27,8 +26,10 @@ const Profile = () => {
             }
         };
 
-        fetchSummonerData();
-    }, []);
+        if (playerId) {
+            fetchSummonerData();
+        }
+    }, [playerId]);
 
 
     return (
@@ -42,12 +43,12 @@ const Profile = () => {
                             alt="Profile Picture"
                         />
                         <div className="flex justify-center mt-1">
-                            <Badge variant="secondary">{summonerData.summonerLevel}</Badge>
+                            <Badge variant="secondary" className="BeaufortforLOLRegular text-[#F0E6D2]">{summonerData.summonerLevel}</Badge>
                         </div>
                     </div>
 
-                    <h1 className="text-5xl text-[#F0E6D2] mb-6"> {summonerData.name}
-                        <span className="text-xl text-[#F0E6D2] text-muted-foreground">#BR1</span>
+                    <h1 className="text-5xl text-[#F0E6D2] mb-6 BeaufortforLOLRegular"> {summonerData.name}
+                        <span className="text-xl text-[#F0E6D2] text-muted-foreground"> #{tag.toUpperCase()}</span>
                     </h1>
                 </div>
             )}
