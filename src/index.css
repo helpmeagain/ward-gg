@@ -45,3 +45,21 @@
 .BeaufortforLOL {
   font-family: BeaufortforLOL;
 }
+
+@font-face {
+  font-family: BeaufortforLOLRegular;
+  src: url(./fonts/BeaufortforLOL-Regular.otf);
+}
+
+.BeaufortforLOLRegular {
+  font-family: BeaufortforLOLRegular;
+}
+
+@font-face {
+  font-family: Spiegel-SemiBold;
+  src: url(./fonts/Spiegel-SemiBold.otf);
+}
+
+.Spiegel-SemiBold {
+  font-family: Spiegel-SemiBold;
+}
