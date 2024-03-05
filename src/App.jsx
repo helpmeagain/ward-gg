@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from "./components/Header";
 import Profile from "./components/Profile";
 import Search from "./components/Search";
+import MatchCard from './components/MatchCard';
 
 function App() {
   const [playerPUUID, setPlayerPUUID] = useState(null);
@@ -15,6 +16,7 @@ function App() {
           <h2 className="text-4xl italic"> Parte da esquerda </h2>
           <Search setPlayerPUUID={setPlayerPUUID} setPlayerTag={setPlayerTag} />
           <Profile playerId={playerPUUID} tag={playerTag} />
+          <MatchCard />
           <p>Aqui virá informações</p>
           <p>Aqui virá informações</p>
           <p>Aqui virá informações</p>
