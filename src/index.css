@@ -36,3 +36,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: BeaufortforLOL;
+  src: url(./fonts/BeaufortforLOL-Bold.otf);
+}
+
+.BeaufortforLOL {
+  font-family: BeaufortforLOL;
+}

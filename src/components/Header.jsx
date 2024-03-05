@@ -7,8 +7,8 @@ const Header = () => {
     return (
         <div className="px-6 py-3 flex items-center justify-between border-b">
             <div className="flex items-center">
-                <img src={WardIcon} alt="" className="w-9 h-8 mr-3" />
-                <h1 className="text-3xl font-bold">Ward.GG</h1>
+                <img src={WardIcon} alt="" className="w-10 h-9 mr-3" />
+                <h1 className="text-4xl BeaufortforLOL text-[#F0E6D2]">Ward.GG</h1>
             </div>
 
             <div className="flex items-center gap-3">
@@ -19,7 +19,7 @@ const Header = () => {
                 <Separator orientation="vertical" className="h-6" />
                 <a href="https://github.com/felipecomarques/ward-gg" target="_blank">
                     <Button variant="outline">
-                        <VscGithub className="w-5 h-5" />
+                        <VscGithub className="w-5 h-5 text-[#F0E6D2]" />
                     </Button>
                 </a>
             </div>
