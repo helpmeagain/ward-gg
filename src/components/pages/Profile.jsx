@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Badge } from "../ui/badge";
 import { useParams } from 'react-router-dom';
 import Matches from '../matchComponents/Matches';
+import Maestria from '../Maestria';
 
 function Profile({ puuid, tagProfile }) {
     const [summonerData, setSummonerData] = useState(null);
@@ -68,6 +69,7 @@ function Profile({ puuid, tagProfile }) {
                         <aside className="w-80 space-y-6">
                             <h2 className="text-4xl italic "> Parte da direita </h2>
                             <p>Aqui virá informações</p>
+                            <Maestria playerId={puuid} />
                         </aside>
                     </div>
                 </>

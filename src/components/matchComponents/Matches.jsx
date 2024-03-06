@@ -11,7 +11,7 @@ const Matches = ({ playerId }) => {
                 const apiUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/"
                 const apiKey = process.env.REACT_APP_API_KEY
 
-                const response = await fetch(proxy + apiUrl + playerId + "/ids?start=0&count=3", {
+                const response = await fetch(proxy + apiUrl + playerId + "/ids?start=0&count=5", {
                     headers: {
                         'X-Riot-Token': apiKey
                     }
