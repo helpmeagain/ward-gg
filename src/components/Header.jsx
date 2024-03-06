@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import { VscGithub, VscColorMode } from "react-icons/vsc";
+import { VscGithub, VscKey } from "react-icons/vsc";
 import WardIcon from "../assets/WardIcon.png"
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
                 {/*  */}
                 <Button variant="outline" disabled>
-                    <VscColorMode className="w-5 h-5" />
+                    <VscKey className="w-5 h-5 text-[#F0E6D2]" />
                 </Button>
                 <Separator orientation="vertical" className="h-6" />
                 <a href="https://github.com/felipecomarques/ward-gg" target="_blank">

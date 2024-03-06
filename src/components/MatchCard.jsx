@@ -83,7 +83,7 @@ const MatchCard = ({ matchId, playerId }) => {
     return (
         <div>
             {participantsData.length > 0 && mainPlayer && (
-                <Card className={`flex w-6/12 ${mainPlayer.win ? 'border-[#0397AB]' : 'border-red-500'}`}>
+                <Card className={`flex w-6/12 pr-4 mb-2 ${mainPlayer.win ? 'border-[#0397AB] bg-blue-500/10' : 'border-red-500 bg-red-500/10'}`}>
                     {console.log(typeof (mainPlayer.win))}
                     {console.log(mainPlayer.win)}
                     {/* SPELLS */}
@@ -108,7 +108,7 @@ const MatchCard = ({ matchId, playerId }) => {
                     </div>
 
                     {/* KDA */}
-                    <div className='flex flex-col justify-center m-3 ml-8 mr-8'>
+                    <div className='flex flex-col justify-center h-16 w-16 mt-5 ml-8 mr-8'>
                         <p className='flex BeaufortforLOL justify-center'>{`${mainPlayer.kills}/${mainPlayer.deaths}/${mainPlayer.assists}`}</p>
                         <p className='flex Spiegel-SemiBold justify-center'>{matchData.info.gameMode}</p>
                     </div>
