@@ -16,10 +16,7 @@ function App() {
           <h2 className="text-4xl italic"> Parte da esquerda </h2>
           <Search setPlayerPUUID={setPlayerPUUID} setPlayerTag={setPlayerTag} />
           <Profile playerId={playerPUUID} tag={playerTag} />
-          <MatchCard playerId={playerPUUID} matchId={'BR1_2887106435'} />
-          <p>Aqui virá informações</p>
-          <p>Aqui virá informações</p>
-          <p>Aqui virá informações</p>
+          <MatchCard playerId={playerPUUID} matchId={'BR1_2900736562'} />
         </div>
         <aside className="w-80 space-y-6">
           <h2 className="text-4xl italic "> Parte da direita </h2>
