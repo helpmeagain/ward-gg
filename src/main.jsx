@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: "match",
+        path: "/match/:matchId/player/:playerId",
         element: <MatchDetails />
       }
     ]
