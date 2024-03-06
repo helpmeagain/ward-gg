@@ -2,14 +2,16 @@ import { useState } from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { VscSearch } from 'react-icons/vsc';
+import { useNavigate } from 'react-router-dom'; 
 
 const Search = ({ setPlayerPUUID, setPlayerTag }) => {
     const [gameName, setGameName] = useState('');
     const [tagLine, setTagLine] = useState('');
+    const navigate = useNavigate();
 
-    const proxy = "https://corsproxy.io/?"
-    const apiUrl = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
-    const apiKey = process.env.REACT_APP_API_KEY
+    const proxy = "https://corsproxy.io/?";
+    const apiUrl = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/";
+    const apiKey = process.env.REACT_APP_API_KEY;
 
     const searchPlayer = async (gameName, tagLine) => {
         try {
@@ -26,6 +28,7 @@ const Search = ({ setPlayerPUUID, setPlayerTag }) => {
                 const data = await response.json();
                 setPlayerPUUID(data.puuid);
                 setPlayerTag(tagLine);
+                navigate(`/player/${data.puuid}/tag/${tagLine}`); 
             } else {
                 console.error('Erro ao buscar o jogador');
             }
