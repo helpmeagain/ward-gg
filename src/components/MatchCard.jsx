@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Card } from './ui/card';
+import jsonData from '../assets/spell.json'
 
 const MatchCard = ({ matchId, playerId }) => {
     const [matchData, setMatchData] = useState(null);
@@ -51,6 +52,8 @@ const MatchCard = ({ matchId, playerId }) => {
                 assists: participant.assists,
                 deaths: participant.deaths,
                 win: participant.win,
+                summoner1Id: participant.summoner1Id,
+                summoner2Id: participant.summoner2Id,
                 item0: participant.item0,
                 item1: participant.item1,
                 item2: participant.item2,
@@ -84,16 +87,14 @@ const MatchCard = ({ matchId, playerId }) => {
         <div>
             {participantsData.length > 0 && mainPlayer && (
                 <Card className={`flex w-6/12 pr-4 mb-2 ${mainPlayer.win ? 'border-[#0397AB] bg-blue-500/10' : 'border-red-500 bg-red-500/10'}`}>
-                    {console.log(typeof (mainPlayer.win))}
-                    {console.log(mainPlayer.win)}
                     {/* SPELLS */}
                     <div className='flex flex-col m-3 ml-5 justify-center'>
                         <img className='h-6 w-6 rounded-sm mb-1 border-2 border-[#32281E]'
-                            src="https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/SummonerFlash.png"
+                            src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/${jsonData[mainPlayer.summoner1Id]}.png`}
                             alt="SummonerSpell"
                         />
                         <img className='h-6 w-6 rounded-sm border-2 border-[#32281E]'
-                            src="https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/SummonerDot.png"
+                            src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/${jsonData[mainPlayer.summoner2Id]}.png`}
                             alt="SummonerSpell"
                         />
                     </div>

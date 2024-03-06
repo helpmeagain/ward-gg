@@ -21,7 +21,6 @@ const Matches = ({ playerId }) => {
                 }
                 const data = await response.json();
                 setMatchData(data);
-                console.log(data.puuid)
             } catch (error) {
                 console.error('Erro ao buscar dados do jogador:', error);
             }
