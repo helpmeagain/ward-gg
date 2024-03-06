@@ -21,6 +21,7 @@ const Profile = ({ playerId, tag }) => {
                 }
                 const data = await response.json();
                 setSummonerData(data);
+                console.log(data.puuid)
             } catch (error) {
                 console.error('Erro ao buscar dados do jogador:', error);
             }
