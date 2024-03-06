@@ -63,3 +63,12 @@
 .Spiegel-SemiBold {
   font-family: Spiegel-SemiBold;
 }
+
+@font-face {
+  font-family: Spiegel-Regular;
+  src: url(./fonts/Spiegel-Regular.otf);
+}
+
+.Spiegel-Regular {
+  font-family: Spiegel-Regular;
+}

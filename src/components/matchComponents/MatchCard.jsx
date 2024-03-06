@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Card } from './ui/card';
-import jsonData from '../assets/spell.json'
+import { Card } from '../ui/card';
+import jsonData from '../../assets/spell.json'
 
 const MatchCard = ({ matchId, playerId }) => {
     const [matchData, setMatchData] = useState(null);
@@ -54,6 +54,8 @@ const MatchCard = ({ matchId, playerId }) => {
                 win: participant.win,
                 summoner1Id: participant.summoner1Id,
                 summoner2Id: participant.summoner2Id,
+                totalMinionsKilled: participant.totalMinionsKilled,
+                visionScore: participant.visionScore,
                 item0: participant.item0,
                 item1: participant.item1,
                 item2: participant.item2,
@@ -86,7 +88,7 @@ const MatchCard = ({ matchId, playerId }) => {
     return (
         <div>
             {participantsData.length > 0 && mainPlayer && (
-                <Card className={`flex w-6/12 pr-4 mb-2 ${mainPlayer.win ? 'border-[#0397AB] bg-blue-500/10' : 'border-red-500 bg-red-500/10'}`}>
+                <Card className={`flex w-7/12 mb-2 ${mainPlayer.win ? 'border-[#0397AB] bg-blue-500/10' : 'border-red-500 bg-red-500/10'}`}>
                     {/* SPELLS */}
                     <div className='flex flex-col m-3 ml-5 justify-center'>
                         <img className='h-6 w-6 rounded-sm mb-1 border-2 border-[#32281E]'
@@ -101,17 +103,23 @@ const MatchCard = ({ matchId, playerId }) => {
 
                     {/* CHAMP */}
                     <div className='flex-col mb-3 mt-3'>
-                        <img className='w-14 h-14 rounded-full border-2 border-[#32281E]'
+                        <img className='w-14 h-14 mb-1 rounded-full border-2 border-[#32281E]'
                             src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${mainPlayer.championName}.png`}
                             alt="ChampionPhoto"
                         />
-                        <p className='text-sm Spiegel-SemiBold flex justify-center'>{mainPlayer.championName}</p>
+                        <p className='text-sm Spiegel-Regular flex justify-center text-[#F0E6D2]'>{mainPlayer.championName}</p>
                     </div>
 
                     {/* KDA */}
-                    <div className='flex flex-col justify-center h-16 w-16 mt-5 ml-8 mr-8'>
-                        <p className='flex BeaufortforLOL justify-center'>{`${mainPlayer.kills}/${mainPlayer.deaths}/${mainPlayer.assists}`}</p>
-                        <p className='flex Spiegel-SemiBold justify-center'>{matchData.info.gameMode}</p>
+                    <div className='flex flex-col justify-center h-16 w-10 mt-5 ml-7 mr-7'>
+                        <p className='flex BeaufortforLOL justify-center text-[#F0E6D2]'>{`${mainPlayer.kills}/${mainPlayer.deaths}/${mainPlayer.assists}`}</p>
+                        <p className='flex Spiegel-SemiBold justify-center text-xs text-[#F0E6D2]'>{matchData.info.gameMode}</p>
+                    </div>
+
+                    {/* CS */}
+                    <div className='flex flex-col justify-center h-16 w-10 mr-7 mt-5'>
+                        <p className='flex Spiegel-SemiBold justify-center text-xs text-muted-foreground'>{`${mainPlayer.visionScore}`} VS</p>
+                        <p className='flex Spiegel-SemiBold justify-center text-xs text-muted-foreground'>{mainPlayer.totalMinionsKilled} CS</p>
                     </div>
 
                     {/* ITENS */}
