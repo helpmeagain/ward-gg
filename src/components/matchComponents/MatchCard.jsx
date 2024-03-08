@@ -21,7 +21,7 @@ const MatchCard = ({ matchId, playerId }) => {
     return (
         <>
             {participantsData.length > 0 && mainPlayer && (
-                <Link to={`/match/${matchId}/player/${playerId}}`} className="card-link">
+                <Link to={`/match/${matchId}/player/${playerId}`} className="card-link">
                     <Card className={`flex w-7/12 mt-2 ${mainPlayer.win ? 'border-[#0397AB] bg-blue-500/10' : 'border-red-500 bg-red-500/10'}`}>
                         {/* SPELLS */}
                         <div className='flex flex-col m-3 ml-5 justify-center'>
