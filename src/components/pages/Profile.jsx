@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Matches from '../matchComponents/Matches';
 import Maestria from '../Maestria';
 
+
 function Profile({ puuid, tagProfile }) {
     const [summonerData, setSummonerData] = useState(null);
     const { playerId, tag } = useParams()
