@@ -116,7 +116,7 @@ function Maestria({ playerId }) {
             );
           })}
           <div className='flex justify-center'>
-            <button onClick={handleVerMaisClick} className="h-auto w-28 bg-[#785A28] hover:bg-[#C89B3C] focus-visible:ring-[#32281E] text-[#F0E6D2] py-2 px-4 rounded mt-2">
+            <button onClick={handleVerMaisClick} className="h-auto w-28 bg-[#785A28] hover:bg-[#C89B3C] focus-visible:ring-[#32281E] text-[#F0E6D2] py-2 px-4 rounded-lg mt-2">
               See more
             </button>
           </div>

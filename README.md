@@ -13,6 +13,8 @@
 </div>
 Frontend application that displays League of Legends match history and statistics.
 
+![wardgg-homepage](./docs/homePagePrint.png)
+
 ## 💻 Overview
 The application, known as Ward.GG, is a platform targeted towards the League of Legends gaming community, which utilizes Riot Games API to extract and present relevant information about players performance and match landscape. Within this platform, users have the opportunity to access a variety of individualized statistics, including win rate, KDA (Kills, Deaths, Assists) score, and a detailed match history. The development of the application is based on React and the Shadcn/ui library, aiming to provide a modern and intuitive experience. Ward.GG offers a user-friendly tool designed to assist League of Legends players in understanding and enhancing their in-game performance.
 
@@ -41,6 +43,12 @@ npm install
 ```bash
 npm run dev
 ```
+
+5. Create a .env file in the root directory of the project (you can use the [exemple](https://github.com/felipecomarques/ward-gg/blob/main/.env.exemple) in the root folder). **The use of an [API key](https://developer.riotgames.com/) is required** :
+```
+REACT_APP_API_KEY=<your-api-key-here>
+```
+
 ## 👨‍💻 Developers
 This project is a collaborative effort of the following developers:
 
