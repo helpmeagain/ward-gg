@@ -7,7 +7,7 @@ import Maestria from '../Maestria';
 
 function Profile({ puuid, tagProfile }) {
     const [summonerData, setSummonerData] = useState(null);
-    const { playerId, tag } = useParams()
+    const { playerId, tag, username } = useParams()
     puuid = playerId
     tagProfile = tag
 
@@ -64,7 +64,7 @@ function Profile({ puuid, tagProfile }) {
                                     <span className="text-xl text-[#F0E6D2] text-muted-foreground"> #{tagProfile.toUpperCase()}</span>
                                 </h1>
                             </div>
-                            <Matches playerId={puuid} />
+                            <Matches playerId={puuid} username={username}/>
                         </div>
 
                         <aside className="w-30 space-y-6">

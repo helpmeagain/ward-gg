@@ -28,7 +28,7 @@ const Search = ({ setPlayerPUUID, setPlayerTag }) => {
                 const data = await response.json();
                 setPlayerPUUID(data.puuid);
                 setPlayerTag(tagLine);
-                navigate(`/player/${data.puuid}/tag/${tagLine}`); 
+                navigate(`/player/${data.puuid}/username/${gameName}/tag/${tagLine}`); 
             } else {
                 console.error('Erro ao buscar o jogador');
             }

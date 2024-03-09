@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MatchCard from './MatchCard';
 
-const Matches = ({ playerId }) => {
+const Matches = ({ playerId, username }) => {
     const [matchData, setMatchData] = useState(null);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ const Matches = ({ playerId }) => {
                 const apiUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/"
                 const apiKey = process.env.REACT_APP_API_KEY
 
-                const response = await fetch(proxy + apiUrl + playerId + "/ids?start=0&count=3", {
+                const response = await fetch(proxy + apiUrl + playerId + "/ids?start=1&count=5", {
                     headers: {
                         'X-Riot-Token': apiKey
                     }
@@ -34,7 +34,7 @@ const Matches = ({ playerId }) => {
     return (
         <div>
             {matchData && matchData.map(matchId => (
-                <MatchCard key={matchId} playerId={playerId} matchId={matchId} />
+                <MatchCard key={matchId} playerId={playerId} matchId={matchId} username={username}/>
             ))}
         </div>
     )
