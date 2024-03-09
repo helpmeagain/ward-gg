@@ -67,9 +67,8 @@ function Profile({ puuid, tagProfile }) {
                             <Matches playerId={puuid} />
                         </div>
 
-                        <aside className="w-80 space-y-6">
-                            <h2 className="text-4xl italic "> Parte da direita </h2>
-                            <p>Aqui virá informações</p>
+                        <aside className="w-30 space-y-6">
+                            <h2 className="text-4xl italic ">Maestria dos Campeões</h2>
                             <Maestria playerId={puuid} />
                         </aside>
                     </div>

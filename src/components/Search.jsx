@@ -48,7 +48,7 @@ const Search = ({ setPlayerPUUID, setPlayerTag }) => {
     return (
         <div className="flex">
             <Input
-                placeholder="Game Name"
+                placeholder="Summoner Name"
                 className="mr-1 w-56 focus-visible:ring-[#785A28] BeaufortforLOLRegular"
                 value={gameName}
                 onChange={(e) => setGameName(e.target.value)}
