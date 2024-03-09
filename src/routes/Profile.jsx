@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Badge } from "../components/ui/badge";
 import { useParams } from 'react-router-dom';
 import Matches from '../components/matchComponents/Matches';
-import Maestria from '../components/Maestria';
+import Mastery from '../components/Mastery';
 
 
 function Profile({ puuid, tagProfile }) {
@@ -68,7 +68,7 @@ function Profile({ puuid, tagProfile }) {
                         </div>
 
                         <aside className="w-30 space-y-6">
-                            <Maestria playerId={puuid} />
+                            <Mastery playerId={puuid} />
                         </aside>
                     </div>
                 </>

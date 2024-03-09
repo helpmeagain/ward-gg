@@ -7,7 +7,7 @@ import HomePage from './routes/HomePage.jsx';
 import MatchDetails from './routes/MatchDetails.jsx';
 import Profile from './routes/Profile.jsx';
 import BasePage from './components/BasePage.jsx';
-import Maestria from './components/Maestria.jsx'; // Importe o componente Maestria
+import MasteryDetails from './routes/MasteryDetails.jsx'; 
 
 const router = createBrowserRouter([
   {
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
         element: <MatchDetails />,
       },
       {
-        path: '/mais-campeoes', 
-        element: <Maestria />,
+        path: '/mastery/:playerId', 
+        element: <MasteryDetails />,
       },
     ],
   },
