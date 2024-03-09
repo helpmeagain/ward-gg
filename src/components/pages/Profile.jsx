@@ -28,7 +28,7 @@ function Profile({ puuid, tagProfile }) {
                 }
                 const data = await response.json();
                 setSummonerData(data);
-                console.log(data.puuid)
+                console.log("PROFILE - PUUID recebido:", data.puuid)
             } catch (error) {
                 console.error('Erro ao buscar dados do jogador:', error);
             }
@@ -43,7 +43,7 @@ function Profile({ puuid, tagProfile }) {
         <>
             {summonerData && (
                 <>
-                    <div className='flex-1 p-6 flex gap-6 ml-14'>
+                    <div className='flex-1 p-6 flex gap-6 mx-14'>
                         <div className="flex flex-col flex-1 gap-6">
                             <div className='flex flex-row items-center'>
                                 <div className='flex flex-col w-36 items-center'>
@@ -59,7 +59,7 @@ function Profile({ puuid, tagProfile }) {
                                     </Badge>
                                 </div>
 
-                                <h1 className="text-5xl text-[#F0E6D2] mb-6 ml-3 BeaufortforLOLRegular"> {/* Nome do jogador */}
+                                <h1 className="text-5xl text-[#F0E6D2] mb-6 ml-5 BeaufortforLOLRegular"> {/* Nome do jogador */}
                                     {summonerData.name}
                                     <span className="text-xl text-[#F0E6D2] text-muted-foreground"> #{tagProfile.toUpperCase()}</span>
                                 </h1>
@@ -68,7 +68,6 @@ function Profile({ puuid, tagProfile }) {
                         </div>
 
                         <aside className="w-30 space-y-6">
-                            <h2 className="text-4xl italic ">Maestria dos Campeões</h2>
                             <Maestria playerId={puuid} />
                         </aside>
                     </div>

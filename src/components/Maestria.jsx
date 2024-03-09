@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Card } from './ui/card';
 
 function Maestria({ playerId }) {
   const [maestriaData, setMaestriaData] = useState(null);
@@ -75,41 +76,53 @@ function Maestria({ playerId }) {
   return (
     <div>
       {maestriaData && championData && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="w-96 flex flex-col gap-2">
           {maestriaData.map((maestria, index) => {
             const championName = Object.values(championData).find(
               (champion) => champion.key === maestria.championId.toString()
             );
             return (
-              <div key={index} className="card-container bg-gradient-to-b from-transparent to-gray-800 p-2 rounded-md shadow-md text-white">
-                <div className="flex items-center justify-center space-x-2 mb-2">
-                  <img
-                    src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${championName.id}.png`}
-                    alt=""
-                    className="h-8 w-8"
-                  />
-                  <img
-                    src={`https://lolg-cdn.porofessor.gg/img/s/masteries/lvl${maestria.championLevel}.png`}
-                    alt=""
-                    className="h-6"
-                  />
-                </div>
-                <h2 className="text-center font-bold text-sm mb-1">{championName.name}</h2>
-                <h2 className="text-center text-green-600 font-semibold mb-1">Pontos: {maestria.championPoints}</h2>
-                <p className="text-center text-yellow-500 text-xs">
-                  Última vez jogado: {new Date(maestria.lastPlayTime).toLocaleDateString()}
-                </p>
+              <div key={index}>
+                {/* CARD WITH TEXT AND IMAGE */}
+                {index === 0 ? (
+                  <div className='image-container '>
+                    <h2 className="text-3xl BeaufortforLOLRegular text-[#F0E6D2] text-center overlay-text">Champion Mastery</h2>
+                    <img src={`https://lolg-cdn.porofessor.gg/img/d/champion-banners/${maestria.championId}.jpg`}
+                      className='w-full h-auto mb-2 rounded-md opacity-50 border-2 border-neutral-400/60' />
+                  </ div>
+                ) : null}
+
+                {/* CARD WITH MASTERY */}
+                <Card className="flex flex-row items-center border-neutral-600 card-container p-2 rounded-md text-[#F0E6D2]">
+                  <div className="flex items-center justify-center space-x-2 mx-4">
+                    <img
+                      src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${championName.id}.png`}
+                      alt=""
+                      className="h-10 w-auto"
+                    />
+                    <img
+                      src={`https://lolg-cdn.porofessor.gg/img/s/masteries/lvl${maestria.championLevel}.png`}
+                      alt=""
+                      className="h-7 w-auto"
+                    />
+                  </div>
+                  <h2 className="w-36 font-bold mb-1 mr-4 text-[#F0E6D2] Spiegel-Regular overflow-hidden">{championName.name}</h2>
+                  <h2 className="text-center text-sm text-muted-foreground font-semibold mb-1">Points: {maestria.championPoints.toLocaleString()}</h2>
+                  <p className="text-center text-muted-foreground text-xs">
+                    Last played: {new Date(maestria.lastPlayTime).toLocaleDateString()}
+                  </p>
+                </Card>
               </div>
             );
           })}
+          <div className='flex justify-center'>
+            <button onClick={handleVerMaisClick} className="h-auto w-28 bg-[#785A28] hover:bg-[#C89B3C] focus-visible:ring-[#32281E] text-[#F0E6D2] py-2 px-4 rounded mt-2">
+              See more
+            </button>
+          </div>
+
         </div>
       )}
-      <button
-        onClick={handleVerMaisClick}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
-      >
-        Ver mais
-      </button>
     </div>
   );
 }

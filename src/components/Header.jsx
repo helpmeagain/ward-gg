@@ -18,7 +18,7 @@ const Header = ({ setPlayerPUUID, setPlayerTag }) => {
             </Link>
 
             {/* BUTTONS RIGHT */}
-            <div className="flex items-center gap-3 mr-5">
+            <div className="flex items-center gap-3 mr-14">
                 {/* <Separator orientation="vertical" className="h-6" /> */}
                 <a href="https://github.com/felipecomarques/ward-gg" target="_blank">
                     <Button variant="outline">

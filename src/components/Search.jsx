@@ -10,7 +10,7 @@ const Search = ({ setPlayerPUUID, setPlayerTag }) => {
     const navigate = useNavigate();
 
     const proxy = "https://corsproxy.io/?";
-    const apiUrl = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/";
+    const apiUrl = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id";
     const apiKey = process.env.REACT_APP_API_KEY;
 
     const searchPlayer = async (gameName, tagLine) => {
@@ -18,7 +18,7 @@ const Search = ({ setPlayerPUUID, setPlayerTag }) => {
             const encodedGameName = encodeURIComponent(gameName);
             const encodedTagLine = encodeURIComponent(tagLine);
 
-            const response = await fetch(`${proxy}${apiUrl}${encodedGameName}/${encodedTagLine}`, {
+            const response = await fetch(`${proxy}${apiUrl}/${encodedGameName}/${encodedTagLine}`, {
                 headers: {
                     'X-Riot-Token': apiKey
                 }
@@ -28,6 +28,8 @@ const Search = ({ setPlayerPUUID, setPlayerTag }) => {
                 const data = await response.json();
                 setPlayerPUUID(data.puuid);
                 setPlayerTag(tagLine);
+                console.log("SEARCH - Fazendo pesquisa de:", gameName, tagLine)
+                console.log("SEARCH - PUUID correspondente:", data.puuid)
                 navigate(`/player/${data.puuid}/username/${gameName}/tag/${tagLine}`); 
             } else {
                 console.error('Erro ao buscar o jogador');

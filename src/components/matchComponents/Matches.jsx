@@ -21,6 +21,7 @@ const Matches = ({ playerId, username }) => {
                 }
                 const data = await response.json();
                 setMatchData(data);
+                console.log("MATCHES - Username recebido:", username)
             } catch (error) {
                 console.error('Erro ao buscar dados do jogador:', error);
             }
