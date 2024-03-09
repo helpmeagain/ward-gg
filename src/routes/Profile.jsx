@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Badge } from "../ui/badge";
+import { Badge } from "../components/ui/badge";
 import { useParams } from 'react-router-dom';
-import Matches from '../matchComponents/Matches';
-import Maestria from '../Maestria';
+import Matches from '../components/matchComponents/Matches';
+import Maestria from '../components/Maestria';
 
 
 function Profile({ puuid, tagProfile }) {

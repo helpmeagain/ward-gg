@@ -1,4 +1,4 @@
-import leagueIcon from "../../assets/leagueIcon.png"
+import leagueIcon from "../assets/leagueIcon.png"
 const HomePage = () => {
     return (
         <div className="flex justify-center items-center">

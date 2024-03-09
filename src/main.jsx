@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import HomePage from './components/pages/HomePage.jsx';
-import MatchDetails from './components/pages/MatchDetails.jsx';
-import Profile from './components/pages/Profile.jsx';
-import BasePage from './components/pages/BasePage.jsx';
+import HomePage from './routes/HomePage.jsx';
+import MatchDetails from './routes/MatchDetails.jsx';
+import Profile from './routes/Profile.jsx';
+import BasePage from './components/BasePage.jsx';
 import Maestria from './components/Maestria.jsx'; // Importe o componente Maestria
 
 const router = createBrowserRouter([

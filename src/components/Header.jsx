@@ -2,10 +2,10 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { VscGithub } from "react-icons/vsc";
 import WardIcon from "../assets/WardIcon.png"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Search from "./Search";
 
-const Header = ({ setPlayerPUUID, setPlayerTag }) => {
+const Header = ({ setPlayerPUUID, setPlayerTag, isHomePage }) => {
     return (
         <div className="px-6 py-3 flex items-center justify-between border-b">
             {/* PROGRAM NAME */}
@@ -13,7 +13,7 @@ const Header = ({ setPlayerPUUID, setPlayerTag }) => {
                 <div className="flex items-center ml-14 gap-3">
                     <img src={WardIcon} alt="" className="w-10 h-9" />
                     <h1 className="text-4xl BeaufortforLOL text-[#F0E6D2]">Ward.GG</h1>
-                    <Search setPlayerPUUID={setPlayerPUUID} setPlayerTag={setPlayerTag}/>
+                    {isHomePage && <Search setPlayerPUUID={setPlayerPUUID} setPlayerTag={setPlayerTag}/>}
                 </div>
             </Link>
 

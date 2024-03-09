@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '../ui/card';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import jsonData from '../../assets/spell.json';
 
 const MatchCard = ({ matchId, playerId, username }) => {
@@ -46,38 +47,43 @@ const MatchCard = ({ matchId, playerId, username }) => {
     }, [matchId]);
 
     useEffect(() => {
-        if (matchData && playerId && username) {
-            const mappedParticipants = matchData.info.participants.map(participant => {
-                return {
-                    puuid: participant.puuid,
-                    championName: participant.championName,
-                    champLevel: participant.champLevel,
-                    kills: participant.kills,
-                    assists: participant.assists,
-                    deaths: participant.deaths,
-                    win: participant.win,
-                    summoner1Id: participant.summoner1Id,
-                    summoner2Id: participant.summoner2Id,
-                    totalMinionsKilled: participant.totalMinionsKilled,
-                    visionScore: participant.visionScore,
-                    totalDamageDealt: participant.totalDamageDealt,
-                    lane: participant.lane,
-                    wardsPlaced: participant.wardsPlaced,
-                    item0: participant.item0,
-                    item1: participant.item1,
-                    item2: participant.item2,
-                    item3: participant.item3,
-                    item4: participant.item4,
-                    item5: participant.item5,
-                    item6: participant.item6,
-                    riotIdGameName: participant.riotIdGameName,
-                    riotId: `${participant.riotIdGameName}#${participant.riotIdTagline}`
-                };
-            });
-
-            const player = mappedParticipants.find(player => player.riotIdGameName === username);
-            setParticipantsData(mappedParticipants);
-            setMainPlayer(player);
+        try {
+            if (matchData && playerId && username) {
+                const mappedParticipants = matchData.info.participants.map(participant => {
+                    return {
+                        puuid: participant.puuid,
+                        championName: participant.championName,
+                        champLevel: participant.champLevel,
+                        kills: participant.kills,
+                        assists: participant.assists,
+                        deaths: participant.deaths,
+                        win: participant.win,
+                        summoner1Id: participant.summoner1Id,
+                        summoner2Id: participant.summoner2Id,
+                        totalMinionsKilled: participant.totalMinionsKilled,
+                        visionScore: participant.visionScore,
+                        totalDamageDealt: participant.totalDamageDealt,
+                        lane: participant.lane,
+                        wardsPlaced: participant.wardsPlaced,
+                        item0: participant.item0,
+                        item1: participant.item1,
+                        item2: participant.item2,
+                        item3: participant.item3,
+                        item4: participant.item4,
+                        item5: participant.item5,
+                        item6: participant.item6,
+                        riotIdGameName: participant.riotIdGameName,
+                        riotId: `${participant.riotIdGameName}#${participant.riotIdTagline}`
+                    };
+                });
+    
+                const player = mappedParticipants.find(player => player.riotIdGameName === username);
+                setParticipantsData(mappedParticipants);
+                setMainPlayer(player);
+            }
+        } catch (error) {
+            setError(error)
+            console.error('Erro ao processar dados do jogador:', error);
         }
     }, [matchData, playerId]);
 
@@ -86,12 +92,16 @@ const MatchCard = ({ matchId, playerId, username }) => {
     }
 
     if (error) {
-        return <div>Ocorreu um erro: {error}</div>;
+        return (
+            <Alert variant="destructive" className="mt-2">
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>
+                    {error}
+                </AlertDescription>
+            </Alert>)
     }
 
-    if (!matchData) {
-        return null;
-    }
+    
 
     return (
         <>
@@ -165,4 +175,4 @@ const MatchCard = ({ matchId, playerId, username }) => {
     );
 };
 
-export default MatchCard;
+export default MatchCard;

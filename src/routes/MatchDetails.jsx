@@ -1,6 +1,6 @@
-import useMatchData from '../matchComponents/useMatchData';
+import useMatchData from '../components/matchComponents/useMatchData';
 import { useParams } from 'react-router-dom';
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '../ui/table';
+import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '../components/ui/table';
 
 function MatchDetails() {
     const { playerId, matchId } = useParams();

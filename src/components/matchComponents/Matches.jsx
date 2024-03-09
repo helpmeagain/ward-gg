@@ -3,6 +3,7 @@ import MatchCard from './MatchCard';
 
 const Matches = ({ playerId, username }) => {
     const [matchData, setMatchData] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMatchData = async () => {
@@ -11,7 +12,7 @@ const Matches = ({ playerId, username }) => {
                 const apiUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/"
                 const apiKey = process.env.REACT_APP_API_KEY
 
-                const response = await fetch(proxy + apiUrl + playerId + "/ids?start=1&count=5", {
+                const response = await fetch(proxy + apiUrl + playerId + "/ids?start=0&count=5", {
                     headers: {
                         'X-Riot-Token': apiKey
                     }
@@ -21,8 +22,8 @@ const Matches = ({ playerId, username }) => {
                 }
                 const data = await response.json();
                 setMatchData(data);
-                console.log("MATCHES - Username recebido:", username)
             } catch (error) {
+                setError('Erro ao buscar dados da partida');
                 console.error('Erro ao buscar dados do jogador:', error);
             }
         };
@@ -32,11 +33,22 @@ const Matches = ({ playerId, username }) => {
         }
     }, [playerId]);
 
+    if (error) {
+        return (
+            <Alert variant="destructive" className="mt-2">
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>
+                    {error}
+                </AlertDescription>
+            </Alert>)
+    }
+
     return (
         <div>
             {matchData && matchData.map(matchId => (
-                <MatchCard key={matchId} playerId={playerId} matchId={matchId} username={username}/>
+                <MatchCard key={matchId} playerId={playerId} matchId={matchId} username={username} />
             ))}
+            {matchData && console.log("MATCHES - Dados das partidas:", matchData)}
         </div>
     )
 }
