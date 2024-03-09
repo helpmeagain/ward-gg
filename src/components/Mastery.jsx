@@ -5,13 +5,12 @@ import { Card } from './ui/card';
 function Mastery({ playerId }) {
   const [maestriaData, setMaestriaData] = useState(null);
   const [championData, setChampionData] = useState(null);
-  const [visibleChampions, setVisibleChampions] = useState(3);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const proxy = "https://corsproxy.io/?";
-        const apiUrl = `https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${playerId}/top?count=${visibleChampions}`;
+        const apiUrl = `https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${playerId}/top?count=3`;
         const apiKey = process.env.REACT_APP_API_KEY;
 
         const response = await fetch(proxy + apiUrl, {
@@ -48,31 +47,7 @@ function Mastery({ playerId }) {
       fetchData();
       fetchChampionData();
     }
-  }, [playerId, visibleChampions]);
-
-  const handleVerMaisClick = async () => {
-    try {
-      const proxy = "https://corsproxy.io/?";
-      const apiUrl = `https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${playerId}/top?count=${visibleChampions + 3}`;
-      const apiKey = process.env.REACT_APP_API_KEY;
-
-      const response = await fetch(proxy + apiUrl, {
-        headers: {
-          'X-Riot-Token': apiKey
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Falha ao buscar mais dados do jogador');
-      }
-
-      const newData = await response.json();
-      setMaestriaData((prevData) => [...prevData, ...newData]);
-      setVisibleChampions((prevVisibleChampions) => prevVisibleChampions + 3);
-    } catch (error) {
-      console.error('Erro ao buscar mais dados do jogador:', error);
-    }
-  };
+  }, [playerId]);
 
   return (
     <div>

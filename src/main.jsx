@@ -1,13 +1,12 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import BasePage from './components/BasePage.jsx';
 import HomePage from './routes/HomePage.jsx';
 import MatchDetails from './routes/MatchDetails.jsx';
-import Profile from './routes/Profile.jsx';
-import BasePage from './components/BasePage.jsx';
-import MasteryDetails from './routes/MasteryDetails.jsx'; 
+import ProfilePage from './routes/ProfilePage.jsx';
+import MasteryDetails from './routes/MasteryDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,14 +19,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/player/:playerId/username/:username/tag/:tag',
-        element: <Profile />,
+        element: <ProfilePage />,
       },
       {
         path: '/match/:matchId/player/:playerId',
         element: <MatchDetails />,
       },
       {
-        path: '/mastery/:playerId', 
+        path: '/mastery/:playerId',
         element: <MasteryDetails />,
       },
     ],

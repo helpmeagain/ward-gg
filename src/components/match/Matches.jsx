@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import MatchCard from './MatchCard';
 
 const Matches = ({ playerId, username }) => {
@@ -8,9 +9,9 @@ const Matches = ({ playerId, username }) => {
     useEffect(() => {
         const fetchMatchData = async () => {
             try {
-                const proxy = "https://corsproxy.io/?"
-                const apiUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/"
-                const apiKey = process.env.REACT_APP_API_KEY
+                const proxy = "https://corsproxy.io/?";
+                const apiUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/";
+                const apiKey = process.env.REACT_APP_API_KEY;
 
                 const response = await fetch(proxy + apiUrl + playerId + "/ids?start=0&count=5", {
                     headers: {
@@ -40,7 +41,7 @@ const Matches = ({ playerId, username }) => {
                 <AlertDescription>
                     {error}
                 </AlertDescription>
-            </Alert>)
+            </Alert>);
     }
 
     return (
@@ -50,7 +51,7 @@ const Matches = ({ playerId, username }) => {
             ))}
             {matchData && console.log("MATCHES - Dados das partidas:", matchData)}
         </div>
-    )
-}
+    );
+};
 
-export default Matches
+export default Matches;

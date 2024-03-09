@@ -1,5 +1,5 @@
 import Header from "./Header";
-import { Outlet, useLocation  } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 function BasePage() {
@@ -11,7 +11,7 @@ function BasePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header setPlayerPUUID={setPlayerPUUID} setPlayerTag={setPlayerTag} isHomePage={isHomePage}/>
+      <Header setPlayerPUUID={setPlayerPUUID} setPlayerTag={setPlayerTag} isHomePage={isHomePage} />
       <Outlet />
     </div>
   );

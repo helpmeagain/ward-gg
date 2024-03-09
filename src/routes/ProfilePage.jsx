@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Badge } from "../components/ui/badge";
 import { useParams } from 'react-router-dom';
-import Matches from '../components/matchComponents/Matches';
+import Matches from '../components/match/Matches';
 import Mastery from '../components/Mastery';
 
 
-function Profile({ puuid, tagProfile }) {
+function ProfilePage({ puuid, tagProfile }) {
     const [summonerData, setSummonerData] = useState(null);
-    const { playerId, tag, username } = useParams()
-    puuid = playerId
-    tagProfile = tag
+    const { playerId, tag, username } = useParams();
+    puuid = playerId;
+    tagProfile = tag;
 
     useEffect(() => {
         const fetchSummonerData = async () => {
             try {
-                const proxy = "https://corsproxy.io/?"
-                const apiUrl = "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/"
-                const apiKey = process.env.REACT_APP_API_KEY
+                const proxy = "https://corsproxy.io/?";
+                const apiUrl = "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/";
+                const apiKey = process.env.REACT_APP_API_KEY;
 
                 const response = await fetch(proxy + apiUrl + puuid, {
                     headers: {
@@ -28,7 +28,7 @@ function Profile({ puuid, tagProfile }) {
                 }
                 const data = await response.json();
                 setSummonerData(data);
-                console.log("PROFILE - PUUID recebido:", data.puuid)
+                console.log("PROFILE - PUUID recebido:", data.puuid);
             } catch (error) {
                 console.error('Erro ao buscar dados do jogador:', error);
             }
@@ -64,7 +64,7 @@ function Profile({ puuid, tagProfile }) {
                                     <span className="text-xl text-[#F0E6D2] text-muted-foreground"> #{tagProfile.toUpperCase()}</span>
                                 </h1>
                             </div>
-                            <Matches playerId={puuid} username={username}/>
+                            <Matches playerId={puuid} username={username} />
                         </div>
 
                         <aside className="w-30 space-y-6">
@@ -78,4 +78,4 @@ function Profile({ puuid, tagProfile }) {
     );
 }
 
-export default Profile
+export default ProfilePage;

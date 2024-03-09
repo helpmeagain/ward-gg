@@ -1,4 +1,4 @@
-import useMatchData from '../components/matchComponents/useMatchData';
+import useMatchData from '@/components/match/data/useMatchData';
 import { useParams } from 'react-router-dom';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '../components/ui/table';
 

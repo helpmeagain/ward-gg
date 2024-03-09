@@ -53,7 +53,7 @@ function MasteryDetails() {
     return (
         <div className='flex m-2 h-full'>
             {maestriaData && championData && (
-                <Table className={"mx-auto h-auto w-8/12 border-4 border-[#32281E] Spiegel-Regular text-center text-[#F0E6D2] bg-[#010A13]"}>
+                <Table className={" mx-auto h-auto w-8/12 border-4 border-[#32281E] Spiegel-Regular text-center text-[#F0E6D2] bg-[#010A13]"}>
                     <TableHeader>
                         <TableRow>
                             <TableHead className="text-center"></TableHead>

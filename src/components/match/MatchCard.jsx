@@ -76,16 +76,16 @@ const MatchCard = ({ matchId, playerId, username }) => {
                         riotId: `${participant.riotIdGameName}#${participant.riotIdTagline}`
                     };
                 });
-    
+
                 const player = mappedParticipants.find(player => player.riotIdGameName === username);
                 setParticipantsData(mappedParticipants);
                 setMainPlayer(player);
             }
         } catch (error) {
-            setError(error)
+            setError(error);
             console.error('Erro ao processar dados do jogador:', error);
         }
-    }, [matchData, playerId]);
+    }, [matchData, playerId, username]);
 
     if (isLoading) {
         return <div>Carregando...</div>;
@@ -98,16 +98,16 @@ const MatchCard = ({ matchId, playerId, username }) => {
                 <AlertDescription>
                     {error}
                 </AlertDescription>
-            </Alert>)
+            </Alert>);
     }
 
-    
+
 
     return (
         <>
             {participantsData.length > 0 && mainPlayer && (
-                <Link to={`/match/${matchId}/player/${playerId}`} className="card-link">
-                    <Card className={`flex w-[550px] mt-2 ${mainPlayer.win ? 'border-[#0397AB] bg-blue-500/10' : 'border-red-500 bg-red-500/10'}`}>
+                <Link to={`/match/${matchId}/player/${playerId}`} className="flex w-[550px] ">
+                    <Card to={`/match/${matchId}/player/${playerId}`} className={`flex w-[550px] mt-2 ${mainPlayer.win ? 'border-[#0397AB] bg-blue-500/10' : 'border-red-500 bg-red-500/10'}`}>
                         {/* SPELLS */}
                         <div className='flex flex-col m-3 ml-5 justify-center'>
                             <img className='h-6 w-6 rounded-sm mb-1 border-2 border-[#32281E]'

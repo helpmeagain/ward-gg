@@ -39,7 +39,7 @@
 
 @font-face {
   font-family: BeaufortforLOL;
-  src: url(./fonts/BeaufortforLOL-Bold.otf);
+  src: url(./assets/fonts/BeaufortforLOL-Bold.otf);
 }
 
 .BeaufortforLOL {
@@ -48,7 +48,7 @@
 
 @font-face {
   font-family: BeaufortforLOLRegular;
-  src: url(./fonts/BeaufortforLOL-Regular.otf);
+  src: url(./assets/fonts/BeaufortforLOL-Regular.otf);
 }
 
 .BeaufortforLOLRegular {
@@ -57,7 +57,7 @@
 
 @font-face {
   font-family: Spiegel-SemiBold;
-  src: url(./fonts/Spiegel-SemiBold.otf);
+  src: url(./assets/fonts/Spiegel-SemiBold.otf);
 }
 
 .Spiegel-SemiBold {
@@ -66,7 +66,7 @@
 
 @font-face {
   font-family: Spiegel-Regular;
-  src: url(./fonts/Spiegel-Regular.otf);
+  src: url(./assets/fonts/Spiegel-Regular.otf);
 }
 
 .Spiegel-Regular {
