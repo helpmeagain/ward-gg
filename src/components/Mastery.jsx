@@ -9,18 +9,20 @@ function Mastery({ playerId }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const proxy = "https://corsproxy.io/?";
-        const apiUrl = `https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${playerId}/top?count=3`;
+        const apiUrl = `/br1/lol/champion-mastery/v4/champion-masteries/by-puuid`;
         const apiKey = process.env.REACT_APP_API_KEY;
 
-        const response = await fetch(proxy + apiUrl, {
+        const response = await fetch(`${apiUrl}/${playerId}/top?count=3`, {
           headers: {
             'X-Riot-Token': apiKey
           }
         });
 
         if (!response.ok) {
-          throw new Error('Falha ao buscar dados do jogador');
+          let errorMessage = `Error ${response.status}: `;
+          const errorData = await response.json();
+          errorMessage += `${errorData?.status?.message || 'An error occurred'}`;
+          throw new Error(errorMessage);
         }
 
         const data = await response.json();

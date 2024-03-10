@@ -13,11 +13,10 @@ const useMatchData = (matchId, playerId) => {
             setError(null);
 
             try {
-                const proxy = "https://corsproxy.io/?";
-                const apiUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/";
+                const apiUrl = "/api/lol/match/v5/matches";
                 const apiKey = process.env.REACT_APP_API_KEY;
 
-                const response = await fetch(proxy + apiUrl + matchId, {
+                const response = await fetch(`${apiUrl}/${matchId}`, {
                     headers: {
                         'X-Riot-Token': apiKey
                     }

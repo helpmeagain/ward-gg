@@ -17,24 +17,25 @@ const MatchCard = ({ matchId, playerId, username }) => {
             setError(null);
 
             try {
-                const proxy = "https://corsproxy.io/?";
-                const apiUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/";
+                const apiUrl = "/api/lol/match/v5/matches";
                 const apiKey = process.env.REACT_APP_API_KEY;
-
-                const response = await fetch(proxy + apiUrl + matchId, {
+                const response = await fetch(`${apiUrl}/${matchId}`, {
                     headers: {
                         'X-Riot-Token': apiKey
                     }
                 });
 
                 if (!response.ok) {
-                    throw new Error('Falha ao buscar dados da partida');
+                    let errorMessage = `Error ${response.status}: `;
+                    const errorData = await response.json();
+                    errorMessage += `${errorData?.status?.message || 'An error occurred'}`;
+                    throw new Error(errorMessage);
                 }
 
                 const data = await response.json();
                 setMatchData(data);
             } catch (error) {
-                setError('Erro ao buscar dados da partida');
+                setError(error);
                 console.error('Erro ao buscar dados da partida:', error);
             } finally {
                 setIsLoading(false);
@@ -96,7 +97,7 @@ const MatchCard = ({ matchId, playerId, username }) => {
             <Alert variant="destructive" className="mt-2">
                 <AlertTitle>Error</AlertTitle>
                 <AlertDescription>
-                    {error}
+                    {error.message}
                 </AlertDescription>
             </Alert>);
     }

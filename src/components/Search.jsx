@@ -6,36 +6,30 @@ import { MdErrorOutline } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { Alert, AlertDescription } from './ui/alert';
 
-const Search = ({ setPlayerPUUID, setPlayerTag }) => {
+const Search = () => {
     const [gameName, setGameName] = useState('');
     const [tagLine, setTagLine] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const proxy = "https://corsproxy.io/?";
-    const apiUrl = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id";
-    const apiKey = process.env.REACT_APP_API_KEY;
-
     const searchPlayer = async (gameName, tagLine) => {
         try {
-            const encodedGameName = encodeURIComponent(gameName);
-            const encodedTagLine = encodeURIComponent(tagLine);
-
-            const response = await fetch(`${proxy}${apiUrl}/${encodedGameName}/${encodedTagLine}`, {
+            const apiUrl = "/api/riot/account/v1/accounts/by-riot-id";
+            const apiKey = process.env.REACT_APP_API_KEY;
+            const response = await fetch(`${apiUrl}/${encodeURIComponent(gameName)}/${encodeURIComponent(tagLine)}`, {
                 headers: {
                     'X-Riot-Token': apiKey
                 }
             });
 
             if (!response.ok) {
-                throw new Error('404 - Summoner not found');
+                let errorMessage = `Error ${response.status}: `;
+                const errorData = await response.json();
+                errorMessage += `${errorData?.status?.message || 'An error occurred'}`;
+                throw new Error(errorMessage);
             }
 
             const data = await response.json();
-            setPlayerPUUID(data.puuid);
-            setPlayerTag(tagLine);
-            console.log("SEARCH - Fazendo pesquisa de:", gameName, tagLine);
-            console.log("SEARCH - PUUID correspondente:", data.puuid);
             navigate(`/player/${data.puuid}/username/${gameName}/tag/${tagLine}`);
         } catch (error) {
             setError(error);
@@ -52,7 +46,6 @@ const Search = ({ setPlayerPUUID, setPlayerTag }) => {
             }
         } catch (error) {
             setError(error);
-            console.error('Por favor, preencha ambos os campos antes de buscar');
         }
     };
 
