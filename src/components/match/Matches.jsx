@@ -50,7 +50,7 @@ const Matches = ({ playerId, summonerId }) => {
     return (
         <div>
             {matchData && matchData.map(matchId => (
-                <MatchCard key={matchId} playerId={playerId} matchId={matchId} summonerId={summonerId} />
+                <MatchCard key={matchId} matchId={matchId} summonerId={summonerId} />
             ))}
             {matchData && console.log("MATCHES - Dados das partidas:", matchData)}
         </div>

@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '../components/ui/table';
 
 function MatchDetails() {
-    const { playerId, matchId } = useParams();
-    const { participantsData } = useMatchData(matchId, playerId);
+    const { summonerId, matchId } = useParams();
+    const { participantsData } = useMatchData(matchId, summonerId);
 
     if (!participantsData) {
         return <div>Carregando...</div>;

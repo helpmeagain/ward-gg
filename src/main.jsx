@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: '/match/:matchId/player/:playerId',
+        path: '/match/:matchId/summoner/:summonerId',
         element: <MatchDetails />,
       },
       {
