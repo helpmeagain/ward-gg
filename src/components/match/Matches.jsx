@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import MatchCard from './MatchCard';
 
-const Matches = ({ playerId, username }) => {
+const Matches = ({ playerId, summonerId }) => {
     const [matchData, setMatchData] = useState(null);
     const [error, setError] = useState(null);
 
@@ -50,7 +50,7 @@ const Matches = ({ playerId, username }) => {
     return (
         <div>
             {matchData && matchData.map(matchId => (
-                <MatchCard key={matchId} playerId={playerId} matchId={matchId} username={username} />
+                <MatchCard key={matchId} playerId={playerId} matchId={matchId} summonerId={summonerId} />
             ))}
             {matchData && console.log("MATCHES - Dados das partidas:", matchData)}
         </div>

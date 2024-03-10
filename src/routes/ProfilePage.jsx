@@ -6,7 +6,7 @@ import Mastery from '../components/Mastery';
 
 function ProfilePage() {
     const [summonerData, setSummonerData] = useState(null);
-    const { playerId, username, tag } = useParams();
+    const { playerId, tag } = useParams();
 
     useEffect(() => {
         const fetchSummonerData = async () => {
@@ -62,7 +62,7 @@ function ProfilePage() {
                                 <span className="text-xl text-[#F0E6D2] text-muted-foreground"> #{tag.toUpperCase()}</span>
                             </h1>
                         </div>
-                        <Matches playerId={playerId} username={username} />
+                        <Matches playerId={playerId} summonerId={summonerData.id} />
                     </div>
 
                     <aside className="w-30 space-y-6">

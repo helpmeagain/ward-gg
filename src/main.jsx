@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/player/:playerId/username/:username/tag/:tag',
+        path: '/player/:playerId/tag/:tag',
         element: <ProfilePage />,
       },
       {

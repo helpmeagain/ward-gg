@@ -4,7 +4,7 @@ import { Card } from '../ui/card';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import jsonData from '../../assets/spell.json';
 
-const MatchCard = ({ matchId, playerId, username }) => {
+const MatchCard = ({ matchId, playerId, summonerId }) => {
     const [participantsData, setParticipantsData] = useState([]);
     const [mainPlayer, setMainPlayer] = useState(null);
     const [matchData, setMatchData] = useState(null);
@@ -49,10 +49,11 @@ const MatchCard = ({ matchId, playerId, username }) => {
 
     useEffect(() => {
         try {
-            if (matchData && playerId && username) {
+            if (matchData && playerId && summonerId) {
                 const mappedParticipants = matchData.info.participants.map(participant => {
                     return {
                         puuid: participant.puuid,
+                        summonerId: participant.summonerId,
                         championName: participant.championName,
                         champLevel: participant.champLevel,
                         kills: participant.kills,
@@ -73,12 +74,14 @@ const MatchCard = ({ matchId, playerId, username }) => {
                         item4: participant.item4,
                         item5: participant.item5,
                         item6: participant.item6,
-                        riotIdGameName: participant.riotIdGameName,
                         riotId: `${participant.riotIdGameName}#${participant.riotIdTagline}`
                     };
                 });
 
-                const player = mappedParticipants.find(player => player.riotIdGameName === username);
+                const player = mappedParticipants.find(player => player.summonerId === summonerId);
+                if (!player) {
+                    throw new Error(`Player ${summonerId} not founded`);
+                }
                 setParticipantsData(mappedParticipants);
                 setMainPlayer(player);
             }
@@ -86,7 +89,7 @@ const MatchCard = ({ matchId, playerId, username }) => {
             setError(error);
             console.error('Erro ao processar dados do jogador:', error);
         }
-    }, [matchData, playerId, username]);
+    }, [matchData, playerId, summonerId]);
 
     if (isLoading) {
         return <div>Carregando...</div>;

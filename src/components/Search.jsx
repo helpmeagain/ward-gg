@@ -30,7 +30,7 @@ const Search = () => {
             }
 
             const data = await response.json();
-            navigate(`/player/${data.puuid}/username/${gameName}/tag/${tagLine}`);
+            navigate(`/player/${data.puuid}/tag/${tagLine}`);
         } catch (error) {
             setError(error);
             console.error('Erro ao buscar o jogador:', error);

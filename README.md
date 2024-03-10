@@ -1,4 +1,3 @@
-
 <div align="center">
   <h3> 🌐 
     <a href="https://github.com/felipecomarques/ward-gg/blob/main/README.md" target="_blank">English</a> | 

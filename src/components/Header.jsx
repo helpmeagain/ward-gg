@@ -4,7 +4,7 @@ import WardIcon from "../assets/images/WardIcon.png";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 
-const Header = ({ isHomePage }) => {
+const Header = () => {
     return (
         <div className="px-6 py-3 flex items-center justify-between border-b">
             {/* LOGO */}
@@ -13,7 +13,7 @@ const Header = ({ isHomePage }) => {
                     <img src={WardIcon} alt="" className="w-10 h-9" />
                     <h1 className="text-4xl BeaufortforLOL text-[#F0E6D2]">Ward.GG</h1>
                 </Link>
-                {isHomePage && <Search />}
+                <Search />
             </div>
 
 
