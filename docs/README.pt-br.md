@@ -12,10 +12,10 @@
 </div>
 Aplicação de frontend que exibe o histórico e estatísticas de partidas do League of Legends.
 
-![wardgg-homepage](./homePagePrint.png)
+![wardgg-homepage](./image.png)
 
 ## 💻 Visão Geral
-A aplicação, conhecida como Ward.GG, é uma plataforma direcionada para a comunidade de jogadores de League of Legends, que se utiliza da API da Riot Games para extrair e apresentar informações relevantes sobre o desempenho dos jogadores e o panorama das partidas. Nessa plataforma, os usuários têm a oportunidade de acessar uma variedade de estatísticas individualizadas, incluindo taxa de vitória, pontuação de KDA (Kills, Deaths, Assists) e um detalhado histórico de partidas. O desenvolvimento da aplicação está fundamentado no React e na biblioteca Shadcn/ui , com a finalidade de proporcionar uma experiência moderna e intuitiva. Ward.GG oferece uma ferramenta amigável, destinada a auxiliar os jogadores de League of Legends na compreensão e aprimoramento de seu desempenho dentro do jogo.
+Ward.GG é uma plataforma direcionada para a comunidade de jogadores de League of Legends, que se utiliza da API da Riot Games para extrair e apresentar informações relevantes sobre o desempenho dos jogadores e o panorama das partidas. Nessa plataforma, os usuários têm a oportunidade de acessar uma variedade de estatísticas individualizadas, incluindo taxa de vitória, pontuação de KDA (Kills, Deaths, Assists) e um detalhado histórico de partidas. O desenvolvimento da aplicação está fundamentado no React e na biblioteca Shadcn/ui , com a finalidade de proporcionar uma experiência moderna e intuitiva. Ward.GG oferece uma ferramenta amigável, destinada a auxiliar os jogadores de League of Legends na compreensão e aprimoramento de seu desempenho dentro do jogo.
 
 ### 💿 Tecnologias
 ![Technologies](https://skillicons.dev/icons?i=js,nodejs,vite,react,tailwind)

@@ -63,15 +63,15 @@ function Mastery({ playerId }) {
               <div key={index}>
                 {/* CARD WITH TEXT AND IMAGE */}
                 {index === 0 ? (
-                  <div className='image-container '>
+                  <Card className='image-container mb-3'>
                     <h2 className="text-3xl BeaufortforLOLRegular text-[#F0E6D2] text-center overlay-text">Champion Mastery</h2>
                     <img src={`https://lolg-cdn.porofessor.gg/img/d/champion-banners/${maestria.championId}.jpg`}
-                      className='w-full h-auto mb-2 rounded-md opacity-50 border-2 border-neutral-400/60' />
-                  </ div>
+                      className='w-full h-auto rounded-md opacity-50' />
+                  </ Card>
                 ) : null}
 
                 {/* CARD WITH MASTERY */}
-                <Card className="flex flex-row items-center border-neutral-600 card-container p-2 rounded-md text-[#F0E6D2]">
+                <Card className="flex flex-row items-center card-container p-2 rounded-md text-[#F0E6D2] bg-stone-900/15">
                   <div className="flex items-center justify-center space-x-2 mx-4">
                     <img
                       src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${championName.id}.png`}

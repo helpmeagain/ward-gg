@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import { VscGithub } from "react-icons/vsc";
-import WardIcon from "../assets/images/WardIcon.png";
+import WardIcon from "/images/WardIcon.png";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 

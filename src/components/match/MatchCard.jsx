@@ -10,8 +10,9 @@ const MatchCard = ({ matchId, summonerId }) => {
 
     if (isLoading) {
         return <div>
-            <Card className="flex w-[550px] mt-2">
-                <p className='text-[#F0E6D2] Spiegel-Regular p-5'> <IoReload /> Carregando...</p>
+            <Card className="flex flew-row items-center w-[550px] mt-2 p-5 gap-2">
+                <IoReload />
+                <p className='text-[#F0E6D2] Spiegel-Regular'>  Carregando...</p>
             </Card>
         </div>;
     }
@@ -49,7 +50,6 @@ const MatchCard = ({ matchId, summonerId }) => {
                                 src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${mainPlayer.championName}.png`}
                                 alt="ChampionPhoto"
                             />
-                            {/* <p className='text-sm Spiegel-Regular flex justify-center text-[#F0E6D2]'>{mainPlayer.championName}</p> */}
                         </div>
 
                         {/* KDA */}

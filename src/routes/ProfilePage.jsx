@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Badge } from "../components/ui/badge";
 import { useParams } from 'react-router-dom';
+import { Card } from '@/components/ui/card';
 import Matches from '../components/match/Matches';
 import Mastery from '../components/Mastery';
+import Rank from '../components/Rank';
 
 function ProfilePage() {
     const [summonerData, setSummonerData] = useState(null);
@@ -41,10 +43,10 @@ function ProfilePage() {
     return (
         <>
             {summonerData && (
-                <div className='flex-1 p-6 flex gap-6 mx-14'>
-                    <div className="flex flex-col flex-1 gap-6">
-                        <div className='flex flex-row items-center'>
-                            <div className='flex flex-col w-36 items-center'>
+                <div className='flex-1 p-4 flex gap-6 mx-14'>
+                    <div className="flex flex-col flex-1 gap-1">
+                        <Card className='flex flex-row items-center justify-between p-6 pt-10 w-[800px] h-72 rounded-lg bg-stone-900/15'>
+                            <div className='flex flex-col w-36 items-center ml-2'>
                                 <img
                                     className="h-36 w-36 rounded-full border-2 mb-2"
                                     src={`http://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/${summonerData.profileIconId}.png`}
@@ -57,11 +59,17 @@ function ProfilePage() {
                                 </Badge>
                             </div>
 
-                            <h1 className="text-5xl text-[#F0E6D2] mb-6 ml-5 BeaufortforLOLRegular"> {/* Nome do jogador */}
-                                {summonerData.name}
-                                <span className="text-xl text-[#F0E6D2] text-muted-foreground"> #{tag.toUpperCase()}</span>
-                            </h1>
-                        </div>
+                            <div>
+                                <h1 className="text-4xl text-[#F0E6D2] ml-2 mb-5 BeaufortforLOLRegular"> {/* Nome do jogador */}
+                                    {summonerData.name}
+                                    <span className="text-base text-[#F0E6D2] text-muted-foreground"> #{tag.toUpperCase()}</span>
+                                </h1>
+                            </div>
+
+                            <div className="ml-auto mr-2 mt-3">
+                                <Rank summonerId={summonerData.id} />
+                            </div>
+                        </Card>
                         <Matches playerId={playerId} summonerId={summonerData.id} />
                     </div>
 
