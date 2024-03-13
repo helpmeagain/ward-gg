@@ -5,13 +5,14 @@ import MatchCard from './MatchCard';
 const Matches = ({ playerId, summonerId }) => {
     const [matchData, setMatchData] = useState(null);
     const [error, setError] = useState(null);
+    const [loadedMatches, setLoadedMatches] = useState(5);
 
     useEffect(() => {
         const fetchMatchData = async () => {
             try {
                 const apiUrl = "/api/lol/match/v5/matches/by-puuid";
                 const apiKey = process.env.REACT_APP_API_KEY;
-                const response = await fetch(`${apiUrl}/${playerId}/ids?start=0&count=5`, {
+                const response = await fetch(`${apiUrl}/${playerId}/ids?start=0&count=${loadedMatches}`, {
                     headers: {
                         'X-Riot-Token': apiKey
                     }
@@ -35,7 +36,11 @@ const Matches = ({ playerId, summonerId }) => {
         if (playerId) {
             fetchMatchData();
         }
-    }, [playerId]);
+    }, [playerId, loadedMatches]);
+
+    const loadMoreMatches = () => {
+        setLoadedMatches(prevLoadedMatches => prevLoadedMatches + 5);
+    };
 
     if (error) {
         return (
@@ -52,7 +57,9 @@ const Matches = ({ playerId, summonerId }) => {
             {matchData && matchData.map(matchId => (
                 <MatchCard key={matchId} matchId={matchId} summonerId={summonerId} />
             ))}
-            {matchData && console.log("MATCHES - Dados das partidas:", matchData)}
+            <div className="mt-2 flex justify-center w-[582px]">
+                <button className="Spiegel-Regular bg-[#785A28] hover:bg-[#C89B3C] focus-visible:ring-[#32281E] text-[#F0E6D2] py-2 px-4 rounded-lg" onClick={loadMoreMatches}>Load More</button>
+            </div>
         </div>
     );
 };
