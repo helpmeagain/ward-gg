@@ -72,7 +72,7 @@ const useMatchData = (matchId, summonerId) => {
                         item4: participant.item4,
                         item5: participant.item5,
                         item6: participant.item6,
-                        riotId: `${participant.riotIdGameName}#${participant.riotIdTagline}`
+                        riotId: `${participant.riotIdGameName} #${participant.riotIdTagline}`
                     };
                 });
 
