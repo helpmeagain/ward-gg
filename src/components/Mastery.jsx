@@ -84,7 +84,7 @@ function Mastery({ playerId }) {
                       className="h-7 w-auto"
                     />
                   </div>
-                  <h2 className="w-36 font-bold mb-1 mr-4 text-[#F0E6D2] Spiegel-Regular overflow-hidden">{championName.name}</h2>
+                  <h2 className="w-36 mb-1 mr-4 text-[#F0E6D2] Spiegel-Regular overflow-hidden">{championName.name}</h2>
                   <h2 className="text-center text-sm text-muted-foreground font-semibold mb-1">Points: {maestria.championPoints.toLocaleString()}</h2>
                   <p className="text-center text-muted-foreground text-xs">
                     Last played: {new Date(maestria.lastPlayTime).toLocaleDateString()}
@@ -96,7 +96,7 @@ function Mastery({ playerId }) {
 
           <div className='flex justify-center'>
             <Link to={`/mastery/${playerId}`}>
-              <button className="h-auto w-28 bg-[#785A28] hover:bg-[#C89B3C] focus-visible:ring-[#32281E] text-[#F0E6D2] py-2 px-4 rounded-lg mt-2">
+              <button className="Spiegel-Regular h-auto w-28 bg-[#785A28] hover:bg-[#C89B3C] focus-visible:ring-[#32281E] text-[#F0E6D2] py-2 px-4 rounded-lg mt-2">
                 See more
               </button>
             </Link>

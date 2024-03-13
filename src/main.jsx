@@ -4,9 +4,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import BasePage from './components/BasePage.jsx';
 import HomePage from './routes/HomePage.jsx';
-import MatchDetails from './routes/MatchDetails.jsx';
+import MatchPage from './routes/MatchPage.jsx';
 import ProfilePage from './routes/ProfilePage.jsx';
-import MasteryDetails from './routes/MasteryDetails.jsx';
+import MasteryPage from './routes/MasteryPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,11 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/match/:matchId/summoner/:summonerId',
-        element: <MatchDetails />,
+        element: <MatchPage />,
       },
       {
         path: '/mastery/:playerId',
-        element: <MasteryDetails />,
+        element: <MasteryPage />,
       },
     ],
   },
