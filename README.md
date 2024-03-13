@@ -38,14 +38,14 @@ cd <project-directory>
 npm install
 ```
 
-4. Start the development server: 
-```bash
-npm run dev
-```
-
-5. Create a .env file in the root directory of the project (you can use the [exemple](https://github.com/felipecomarques/ward-gg/blob/main/.env.exemple) in the root folder). **The use of an [API key](https://developer.riotgames.com/) is required** :
+4. Create a .env file in the root directory of the project (you can use the [exemple](https://github.com/felipecomarques/ward-gg/blob/main/.env.exemple) in the root folder). **The use of an [API key](https://developer.riotgames.com/) is required** :
 ```
 REACT_APP_API_KEY=<your-api-key-here>
+```
+
+5. Start the development server: 
+```bash
+npm run dev
 ```
 
 ## 👨‍💻 Developers
