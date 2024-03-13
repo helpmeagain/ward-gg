@@ -57,7 +57,7 @@ const Matches = ({ playerId, summonerId }) => {
             {matchData && matchData.map(matchId => (
                 <MatchCard key={matchId} matchId={matchId} summonerId={summonerId} />
             ))}
-            <div className="mt-2 flex justify-center w-[582px]">
+            <div className="mt-5 flex justify-center w-[582px]">
                 <button className="Spiegel-Regular bg-[#785A28] hover:bg-[#C89B3C] focus-visible:ring-[#32281E] text-[#F0E6D2] py-2 px-4 rounded-lg" onClick={loadMoreMatches}>Load More</button>
             </div>
         </div>

@@ -83,12 +83,28 @@ const MatchCard = ({ matchId, summonerId }) => {
                         <div className='flex flex-col justify-center gap-1 w-40 ml-4'>
                             <div className='flex justify-center gap-1'>
                                 {participantsData.slice(0, 5).map((player, index) => (
-                                    <img key={index} className='h-6 rounded-sm border-2 border-[#32281E]' src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/champion/${player.championName}.png`} alt="" />
+                                    <img
+                                        key={index}
+                                        className='h-6 rounded-sm border-2 border-[#32281E]'
+                                        src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/champion/${player.championName}.png`}
+                                        alt=""
+                                        onError={(e) => {
+                                            e.target.src = 'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/29.png';
+                                        }}
+                                    />
                                 ))}
                             </div>
                             <div className='flex justify-center gap-1'>
                                 {participantsData.slice(5, 10).map((player, index) => (
-                                    <img key={index} className='h-6 rounded-sm border-2 border-[#32281E]' src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/champion/${player.championName}.png`} alt="" />
+                                    <img
+                                        key={index}
+                                        className='h-6 rounded-sm border-2 border-[#32281E]'
+                                        src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/champion/${player.championName}.png`}
+                                        alt=""
+                                        onError={(e) => {
+                                            e.target.src = 'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/29.png';
+                                        }}
+                                    />
                                 ))}
                             </div>
                         </div>
