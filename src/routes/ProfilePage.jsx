@@ -84,7 +84,7 @@ function ProfilePage() {
                         <Matches playerId={playerId} summonerId={summonerData.puuid} />
                     </div>
 
-                    <aside className="w-30 space-y-6">
+                    <aside className="space-y-6">
                         <Mastery playerId={playerId} />
                     </aside>
                 </div>
