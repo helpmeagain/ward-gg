@@ -34,7 +34,7 @@ function Mastery({ playerId }) {
 
     const fetchChampionData = async () => {
       try {
-        const response = await fetch('https://ddragon.leagueoflegends.com/cdn/14.4.1/data/pt_BR/champion.json');
+        const response = await fetch('https://ddragon.leagueoflegends.com/cdn/15.16.1/data/pt_BR/champion.json');
         if (!response.ok) {
           throw new Error('Falha ao buscar dados dos campeões');
         }
@@ -74,12 +74,12 @@ function Mastery({ playerId }) {
                 <Card className="flex flex-row items-center card-container p-2 rounded-md text-[#F0E6D2] bg-stone-900/15">
                   <div className="flex items-center justify-center space-x-2 mx-4">
                     <img
-                      src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${championName.id}.png`}
+                      src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/champion/${championName.id}.png`}
                       alt=""
                       className="h-10 w-auto"
                     />
                     <img
-                      src={`https://lolg-cdn.porofessor.gg/img/s/masteries/lvl${maestria.championLevel}.png`}
+                      src={`https://lolg-cdn.porofessor.gg/img/s/masteries/lvl${Math.min(maestria.championLevel, 10)}.png`}
                       alt=""
                       className="h-7 w-auto"
                     />

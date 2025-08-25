@@ -6,7 +6,7 @@ function Rank({ summonerId }) {
     useEffect(() => {
         const fetchSummonerData = async () => {
             try {
-                const apiUrl = "/br1/lol/league/v4/entries/by-summoner";
+                const apiUrl = "/br1/lol/league/v4/entries/by-puuid";
                 const apiKey = process.env.REACT_APP_API_KEY;
 
                 const response = await fetch(`${apiUrl}/${summonerId}`, {

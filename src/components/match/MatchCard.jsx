@@ -36,11 +36,11 @@ const MatchCard = ({ matchId, summonerId }) => {
                         {/* SPELLS */}
                         <div className='flex flex-col m-3 ml-5 justify-center'>
                             <img className='h-6 w-6 rounded-sm mb-1 border-2 border-[#32281E]'
-                                src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/${jsonData[mainPlayer.summoner1Id]}.png`}
+                                src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/spell/${jsonData[mainPlayer.summoner1Id]}.png`}
                                 alt="SummonerSpell"
                             />
                             <img className='h-6 w-6 rounded-sm border-2 border-[#32281E]'
-                                src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/${jsonData[mainPlayer.summoner2Id]}.png`}
+                                src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/spell/${jsonData[mainPlayer.summoner2Id]}.png`}
                                 alt="SummonerSpell"
                             />
                         </div>
@@ -48,7 +48,7 @@ const MatchCard = ({ matchId, summonerId }) => {
                         {/* CHAMP */}
                         <div className='flex items-center justify-center'>
                             <img className='w-14 h-14 mb-1 items-center justify-center rounded-full border-2 border-[#32281E]'
-                                src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${mainPlayer.championName}.png`}
+                                src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/champion/${mainPlayer.championName}.png`}
                                 alt="ChampionPhoto"
                             />
                         </div>
@@ -68,14 +68,43 @@ const MatchCard = ({ matchId, summonerId }) => {
                         {/* ITENS */}
                         <div className='flex flex-col justify-center gap-1'>
                             <div className='flex justify-center gap-1'>
-                                {[0, 1, 2].map((itemIndex) => (
-                                    <img key={itemIndex} className='w-6 h-6 rounded-sm border-2 border-[#32281E]' src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/${mainPlayer[`item${itemIndex}`]}.png`} alt="" />
-                                ))}
+                                {[0, 1, 2].map((itemIndex) => {
+                                    const itemId = mainPlayer[`item${itemIndex}`];
+                                    return (
+                                        <div
+                                            key={itemIndex}
+                                            className="w-6 h-6 rounded-sm border-2 border-[#32281E] bg-[#1C1C1C] flex items-center justify-center"
+                                        >
+                                            {itemId !== 0 && (
+                                                <img
+                                                    className="w-full h-full rounded-sm"
+                                                    src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/item/${itemId}.png`}
+                                                    alt=""
+                                                />
+                                            )}
+                                        </div>
+                                    );
+                                })}
                             </div>
+
                             <div className='flex justify-center gap-1'>
-                                {[3, 4, 6].map((itemIndex) => (
-                                    <img key={itemIndex} className='w-6 h-6 rounded-sm border-2 border-[#32281E]' src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/${mainPlayer[`item${itemIndex}`]}.png`} alt="" />
-                                ))}
+                                {[3, 4, 6].map((itemIndex) => {
+                                    const itemId = mainPlayer[`item${itemIndex}`];
+                                    return (
+                                        <div
+                                            key={itemIndex}
+                                            className="w-6 h-6 rounded-sm border-2 border-[#32281E] bg-[#1C1C1C] flex items-center justify-center"
+                                        >
+                                            {itemId !== 0 && (
+                                                <img
+                                                    className="w-full h-full rounded-sm"
+                                                    src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/item/${itemId}.png`}
+                                                    alt=""
+                                                />
+                                            )}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
 
@@ -86,10 +115,10 @@ const MatchCard = ({ matchId, summonerId }) => {
                                     <img
                                         key={index}
                                         className='h-6 rounded-sm border-2 border-[#32281E]'
-                                        src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/champion/${player.championName}.png`}
+                                        src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/champion/${player.championName}.png`}
                                         alt=""
                                         onError={(e) => {
-                                            e.target.src = 'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/29.png';
+                                            e.target.src = 'https://ddragon.leagueoflegends.com/cdn/15.16.1/img/profileicon/29.png';
                                         }}
                                     />
                                 ))}
@@ -99,10 +128,10 @@ const MatchCard = ({ matchId, summonerId }) => {
                                     <img
                                         key={index}
                                         className='h-6 rounded-sm border-2 border-[#32281E]'
-                                        src={`https://ddragon.leagueoflegends.com/cdn/14.5.1/img/champion/${player.championName}.png`}
+                                        src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/champion/${player.championName}.png`}
                                         alt=""
                                         onError={(e) => {
-                                            e.target.src = 'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/29.png';
+                                            e.target.src = 'https://ddragon.leagueoflegends.com/cdn/15.16.1/img/profileicon/29.png';
                                         }}
                                     />
                                 ))}

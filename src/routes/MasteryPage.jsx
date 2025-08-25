@@ -36,7 +36,7 @@ function MasteryPage() {
 
         const fetchChampionData = async () => {
             try {
-                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/14.4.1/data/pt_BR/champion.json');
+                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/15.16.1/data/pt_BR/champion.json');
                 if (!response.ok) {
                     throw new Error('Falha ao buscar dados dos campeões');
                 }
@@ -65,7 +65,6 @@ function MasteryPage() {
                                 <TableHead className="text-center">Level</TableHead>
                                 <TableHead className="text-center">Points</TableHead>
                                 <TableHead className="text-center">Token</TableHead>
-                                <TableHead className="text-center">Chest Granted</TableHead>
                                 <TableHead className="text-center">Last played</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -75,7 +74,7 @@ function MasteryPage() {
                                 return (
                                     <TableRow key={index}>
                                         <TableCell className="text-center">{champion ? <img
-                                            src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${champion.id}.png`}
+                                            src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/champion/${champion.id}.png`}
                                             alt=""
                                             className="h-10 w-auto"
                                         /> : 'Unknown'}</TableCell>
@@ -83,7 +82,6 @@ function MasteryPage() {
                                         <TableCell className="text-center">{maestria.championLevel}</TableCell>
                                         <TableCell className="text-center">{maestria.championPoints}</TableCell>
                                         <TableCell className="text-center"> {maestria.tokensEarned} </TableCell>
-                                        <TableCell className="text-center"> {maestria.chestGranted ? 'Yes' : 'No'} </TableCell>
                                         <TableCell className="text-center">{new Date(maestria.lastPlayTime).toLocaleDateString()}</TableCell>
                                     </TableRow>
                                 );

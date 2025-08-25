@@ -48,7 +48,7 @@ function renderTable(data) {
                             <TableCell>{participant.riotId}</TableCell>
                             <TableCell>{participant.champLevel}</TableCell>
                             <TableCell className="text-center">
-                                <img src={`https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${participant.championName}.png`}
+                                <img src={`https://ddragon.leagueoflegends.com/cdn/15.16.1/img/champion/${participant.championName}.png`}
                                     className='h-6 w-6 mx-auto' />
                                 {participant.championName}
                             </TableCell>

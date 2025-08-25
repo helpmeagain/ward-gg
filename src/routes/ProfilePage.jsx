@@ -8,28 +8,39 @@ import Rank from '../components/Rank';
 
 function ProfilePage() {
     const [summonerData, setSummonerData] = useState(null);
-    const { playerId, tag } = useParams();
+    const [accountData, setAccountData] = useState(null);
+    const { playerId } = useParams();
 
     useEffect(() => {
-        const fetchSummonerData = async () => {
+       const fetchSummonerData = async () => {
             try {
-                const apiUrl = "/br1/lol/summoner/v4/summoners/by-puuid";
                 const apiKey = process.env.REACT_APP_API_KEY;
 
-                const response = await fetch(`${apiUrl}/${playerId}`, {
-                    headers: {
-                        'X-Riot-Token': apiKey
-                    }
+                const summonerUrl = `/br1/lol/summoner/v4/summoners/by-puuid/${playerId}`;
+                const summonerResponse = await fetch(summonerUrl, {
+                    headers: { 'X-Riot-Token': apiKey }
                 });
-                if (!response.ok) {
-                    let errorMessage = `Error ${response.status}: `;
-                    const errorData = await response.json();
+                if (!summonerResponse.ok) {
+                    let errorMessage = `Error ${summonerResponse.status}: `;
+                    const errorData = await summonerResponse.json();
                     errorMessage += `${errorData?.status?.message || 'An error occurred'}`;
                     throw new Error(errorMessage);
                 }
-                const data = await response.json();
-                setSummonerData(data);
-                console.log("PROFILE - PUUID recebido:", data.puuid);
+                const summoner = await summonerResponse.json();
+                setSummonerData(summoner);
+
+                const accountUrl = `/api/riot/account/v1/accounts/by-puuid/${playerId}`;
+                const accountResponse = await fetch(accountUrl, {
+                    headers: { 'X-Riot-Token': apiKey }
+                });
+                if (!accountResponse.ok) {
+                    let errorMessage = `Error ${accountResponse.status}: `;
+                    const errorData = await accountResponse.json();
+                    errorMessage += `${errorData?.status?.message || 'An error occurred'}`;
+                    throw new Error(errorMessage);
+                }
+                const account = await accountResponse.json();
+                setAccountData(account);
             } catch (error) {
                 console.error('Erro ao buscar dados do jogador:', error);
             }
@@ -42,14 +53,14 @@ function ProfilePage() {
 
     return (
         <>
-            {summonerData && (
+            {summonerData && accountData && (
                 <div className='flex-1 p-4 flex gap-6 mx-14'>
                     <div className="flex flex-col flex-1 gap-1">
                         <Card className='flex flex-row items-center justify-between p-6 pt-10 w-[800px] h-72 rounded-lg bg-stone-900/15'>
                             <div className='flex flex-col w-36 items-center ml-2'>
                                 <img
                                     className="h-36 w-36 rounded-full border-2 mb-2"
-                                    src={`http://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/${summonerData.profileIconId}.png`}
+                                    src={`http://ddragon.leagueoflegends.com/cdn/15.16.1/img/profileicon/${summonerData.profileIconId}.png`}
                                     alt="Profile Picture"
                                 />
                                 <Badge
@@ -61,16 +72,16 @@ function ProfilePage() {
 
                             <div>
                                 <h1 className="text-4xl text-[#F0E6D2] ml-2 mb-5 BeaufortforLOLRegular"> {/* Nome do jogador */}
-                                    {summonerData.name}
-                                    <span className="text-base text-[#F0E6D2] text-muted-foreground"> #{tag.toUpperCase()}</span>
+                                    {accountData.gameName}
+                                    <span className="text-base text-[#F0E6D2] text-muted-foreground"> #{accountData.tagLine.toUpperCase()}</span>
                                 </h1>
                             </div>
 
                             <div className="ml-auto mr-2 mt-3">
-                                <Rank summonerId={summonerData.id} />
+                                <Rank summonerId={summonerData.puuid} />
                             </div>
                         </Card>
-                        <Matches playerId={playerId} summonerId={summonerData.id} />
+                        <Matches playerId={playerId} summonerId={summonerData.puuid} />
                     </div>
 
                     <aside className="w-30 space-y-6">
